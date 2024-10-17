@@ -1,0 +1,286 @@
+body, html {
+    top: -50px;
+    left: -50px;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    user-select: none;
+}
+
+.selectionBox{
+    background-color: #0033a057;
+    border: 1px solid #0033a087;
+    position: fixed;
+    z-index: 9999 !important;
+    border-radius: 5px;
+}
+
+
+/*====================================================================
+Top Menu
+====================================================================*/
+#topMenu{
+    position:absolute;
+    width: calc(100% - 50px);
+    height: 40px;
+    z-index: 1000;
+    margin: 20px;
+    background: linear-gradient(90deg, #0033a0, #C6007E);
+    border-radius: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    /*box-shadow: 0px 0px 10px rgb(156, 156, 156);*/
+    user-select: none;
+    
+}
+
+.topMenuButton{
+    display: inline-block;
+    height:28px;
+    line-height: 28px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 5px;
+    font-weight: 400;
+    color:#0033A0;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 3.5px;
+    margin-left: 3.5px;
+    border: 1px solid white;
+}
+
+.topMenuButton:hover{
+    background-color: #0033A0;
+    color: white;
+    
+}
+
+.topMenuButtonRight{
+    display: inline-block;
+    height:28px;
+    line-height: 28px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 5px;
+    font-weight: 400;
+    color:#0033A0;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 3.5px;
+    margin-left: 3.5px;
+    border: 1px solid white;
+    float: right;
+}
+
+.topMenuButtonRight:hover{
+    background-color: #0033A0;
+    color: white;
+    
+}
+
+/*====================================================================
+Board
+====================================================================*/
+
+#Board {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../Img/bodyBG.png");
+    background-repeat:repeat;
+    overflow: hidden;
+}
+
+.cell{
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    background-color: rgb(255, 255, 255);
+    /*box-shadow: 0px 0px 10px rgb(156, 156, 156);*/
+    overflow: hidden;
+    border-radius: 10px 10px 0px 10px;
+    color: #0033A0;
+    box-sizing: border-box;
+    
+}
+
+.cellSelected{
+    box-shadow: 0px 0px 20px 0px #0033A0;
+}
+
+.cell:focus-within {
+    box-shadow: 0px 0px 20px 0px #0033A0;
+}
+
+.cell:hover{
+    box-shadow: 0px 0px 20px 0px #0033A0;
+    z-index: 9999 !important;
+}
+
+.cell img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+  }
+
+.cellInnerHTML{
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    padding-top: 5px;
+    overflow: hidden;
+    line-height:20px;
+    display: inline-block; 
+    outline:none;
+    user-select: none;
+    cursor: text;
+}
+
+.cellInnerHTML img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure the image scales without distortion */
+  }
+
+.deleteButton{
+    height: 20px;
+    line-height: 20px;
+    width: 30px;
+    float: right;
+    background-color: white;
+    color: #D22630;
+    margin-top: 6px;
+    margin-right: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.deleteButton:hover{
+    background-color: #D22630;
+    color: white;
+}
+
+.editTitleButton{
+    height: 20px;
+    line-height: 20px;
+    width: 30px;
+    float: left;
+    background-color: white;
+    color: #00968F;
+    margin-top: 6px;
+    margin-left: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.editTitleButton:hover{
+    background-color: #00968F;
+    color: white;
+}
+
+
+.CellTitleBar{
+    /*border-bottom:1px solid rgb(207, 207, 207);*/
+    position:sticky;
+    width: 100%;
+    height: 32px;
+    line-height:32px;
+    background: #0033A0;
+    text-align: center;
+    font-weight: 400;
+    color: #0033A0;
+    font-size: 15px;
+    user-select: none;
+    cursor:grab;
+    border-radius: 0px;
+}
+
+.titleBarText{
+    /*border-bottom:1px solid rgb(207, 207, 207);*/
+    position:sticky;
+    margin-top: 6px;
+    margin-left: 6px;
+    width: calc(100% - 86px);
+    height: 20px;
+    line-height:20px;
+    background: white;
+    text-align: center;
+    font-weight: 400;
+    color: #0033A0;
+    font-size: 15px;
+    user-select: none;
+    cursor:grab;
+    border-radius: 20px;
+    float:left;
+    pointer-events: none;
+}
+
+
+.corner{
+    position:absolute;
+    width: 20px;
+    height: 20px;
+    right:0;
+    bottom:0;
+    cursor:se-resize;
+    pointer-events:all;
+}
+
+.corner:hover{
+    background-image: url("../Img/resizeCorner.png");
+}
+
+.frame{
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border:double 5px #4a4a4a;
+    overflow: hidden;
+    border-radius: 10px 10px 0px 10px;
+    color: #0033A0;
+    user-select: none;
+    pointer-events: none;
+    
+}
+
+.frame:focus-within {
+    box-shadow: 0px 0px 20px 0px #4a4a4a;
+}
+
+.frame:hover{
+    box-shadow: 0px 0px 20px 0px #4a4a4a;
+    z-index: 999 !important;
+}
+
+.frameTitleBar{
+    /*border-bottom:1px solid rgb(207, 207, 207);*/
+    position:sticky;
+    width: 100%;
+    height: 32px;
+    line-height:32px;
+    text-align: center;
+    font-weight: 400;
+    background:#dfdfdf;
+    color: #4a4a4a;
+    font-size: 15px;
+    user-select: none;
+    cursor:grab;
+    border-radius: 0px;
+    border-bottom: 2.5px solid #4a4a4a;
+    pointer-events:all;
+}
+
+
