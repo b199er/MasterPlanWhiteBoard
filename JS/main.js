@@ -571,26 +571,26 @@ class CellInnerDiv {
     resizeToFitContent() {
         // Reset dimensions to auto
         this.cellInnerHTMLElement.style.height = 'auto';
-        this.cellInnerHTMLElement.style.width = 'auto';
+        this.cellInnerHTMLElement.style.width = '100%';
 
         this.parentCell.scrollTop = 0;
 
         // Calculate content size
         let contentHeight = this.cellInnerHTMLElement.scrollHeight + 32;
-        let contentWidth = this.cellInnerHTMLElement.scrollWidth + 32;
+        //let contentWidth = this.cellInnerHTMLElement.scrollWidth + 32;
 
         // Adjust to grid size
         contentHeight = Math.ceil(contentHeight / gridCellH);
-        contentWidth = Math.ceil(contentWidth / gridCellW);
+        //contentWidth = Math.ceil(contentWidth / gridCellW);
 
-        if (contentWidth > this.parentCellObj.width) {
+        /*if (contentWidth > this.parentCellObj.width) {
             this.setSize(contentWidth, this.parentCellObj.height);
             this.parentCellObj.setSize(contentWidth, this.parentCellObj.height);
-        }
+        }*/
 
-        if (this.parentCellObj.width > contentWidth) {
+        /*if (this.parentCellObj.width > contentWidth) {
             this.setSize(this.parentCellObj.width + 1, this.parentCellObj.height);
-        }
+        }*/
 
         if (contentHeight > this.parentCellObj.height) {
             this.setSize(this.parentCellObj.width, contentHeight);
