@@ -521,7 +521,6 @@ class CellInnerDiv {
         this.cellInnerHTMLElement.addEventListener("paste", () => this.onPaste());
         this.cellInnerHTMLElement.addEventListener("focus", (e) => this.onFocus(e));
         this.cellInnerHTMLElement.addEventListener("focusout", (e) => this.onFocusout(e));
-        this.cellInnerHTMLElement.addEventListener("keydown", (e) => this.resizeToFitContent());
 
         // Constants
         this.TITLE_BAR_HEIGHT = 1;
@@ -582,12 +581,12 @@ class CellInnerDiv {
 
         // Adjust to grid size
         contentHeight = Math.ceil(contentHeight / gridCellH);
-        //contentWidth = Math.ceil(contentWidth / gridCellW);
+        contentWidth = Math.ceil(contentWidth / gridCellW);
 
-        /*if (contentWidth > this.parentCellObj.width) {
+        if (contentWidth > this.parentCellObj.width) {
             this.setSize(contentWidth, this.parentCellObj.height);
             this.parentCellObj.setSize(contentWidth, this.parentCellObj.height);
-        }*/
+        }
 
         if (this.parentCellObj.width > contentWidth) {
             this.setSize(this.parentCellObj.width + 1, this.parentCellObj.height);
