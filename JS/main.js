@@ -521,6 +521,7 @@ class CellInnerDiv {
         this.cellInnerHTMLElement.addEventListener("paste", () => this.onPaste());
         this.cellInnerHTMLElement.addEventListener("focus", (e) => this.onFocus(e));
         this.cellInnerHTMLElement.addEventListener("focusout", (e) => this.onFocusout(e));
+        this.cellInnerHTMLElement.addEventListener("keydown", (e) => this.resizeToFitContent());
 
         // Constants
         this.TITLE_BAR_HEIGHT = 1;
