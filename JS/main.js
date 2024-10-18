@@ -588,9 +588,9 @@ class CellInnerDiv {
             this.parentCellObj.setSize(contentWidth, this.parentCellObj.height);
         }*/
 
-        /*if (this.parentCellObj.width > contentWidth) {
+        if (this.parentCellObj.width > contentWidth) {
             this.setSize(this.parentCellObj.width + 1, this.parentCellObj.height);
-        }*/
+        }
 
         if (contentHeight > this.parentCellObj.height) {
             this.setSize(this.parentCellObj.width, contentHeight);
