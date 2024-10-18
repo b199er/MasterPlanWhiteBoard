@@ -577,7 +577,7 @@ class CellInnerDiv {
 
         // Calculate content size
         let contentHeight = this.cellInnerHTMLElement.scrollHeight + 32;
-        //let contentWidth = this.cellInnerHTMLElement.scrollWidth + 32;
+        let contentWidth = this.cellInnerHTMLElement.scrollWidth + 32;
 
         // Adjust to grid size
         contentHeight = Math.ceil(contentHeight / gridCellH);
