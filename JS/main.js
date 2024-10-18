@@ -571,7 +571,7 @@ class CellInnerDiv {
     resizeToFitContent() {
         // Reset dimensions to auto
         this.cellInnerHTMLElement.style.height = 'auto';
-        this.cellInnerHTMLElement.style.width = '100%';
+        this.cellInnerHTMLElement.style.width = 'auto';
 
         this.parentCell.scrollTop = 0;
 
