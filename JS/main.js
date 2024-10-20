@@ -261,7 +261,7 @@ class Board {
         }
 
         this.isDragging = false;
-        
+
         if (!this.panKeyDown) {
             return;
         }
@@ -442,6 +442,11 @@ class CellTitleBar {
         this.element.className = 'CellTitleBar';
     }
 
+    resetPos(){
+        this.element.style.top="0px";
+        this.element.style.left="0px";
+    }
+
     changeTitle() {
         this.titleText.innerHTML = prompt("Insert a new title", "Title");
     }
@@ -568,12 +573,15 @@ class CellInnerDiv {
         }, 10);
     }
 
+    
+
     resizeToFitContent() {
         // Reset dimensions to auto
         this.cellInnerHTMLElement.style.height = 'auto';
         this.cellInnerHTMLElement.style.width = 'auto';
 
         this.parentCell.scrollTop = 0;
+        this.parentCell.scrollLeft = 0;
 
         // Calculate content size
         let contentHeight = this.cellInnerHTMLElement.scrollHeight + 32;
@@ -584,16 +592,16 @@ class CellInnerDiv {
         contentWidth = Math.ceil(contentWidth / gridCellW);
 
         if (contentWidth > this.parentCellObj.width) {
-            this.setSize(contentWidth, this.parentCellObj.height);
-            this.parentCellObj.setSize(contentWidth, this.parentCellObj.height);
+            this.setSize(contentWidth-1, this.parentCellObj.height);
+            this.parentCellObj.setSize(this.parentCellObj.width, this.parentCellObj.height);
         }
 
         if (this.parentCellObj.width > contentWidth) {
-            this.setSize(this.parentCellObj.width + 1, this.parentCellObj.height);
+            this.setSize(this.parentCellObj.width-1, this.parentCellObj.height);
         }
 
         if (contentHeight > this.parentCellObj.height) {
-            this.setSize(this.parentCellObj.width, contentHeight);
+            this.setSize(this.parentCellObj.width-1, contentHeight);
             this.parentCellObj.setSize(
                 this.parentCellObj.width,
                 contentHeight + this.TITLE_BAR_HEIGHT
@@ -601,8 +609,45 @@ class CellInnerDiv {
         }
 
         if (this.parentCellObj.height > contentHeight) {
-            this.setSize(this.parentCellObj.width, this.parentCellObj.height);
+            this.setSize(this.parentCellObj.width-1, this.parentCellObj.height);
         }
+
+        this.parentCellObj.titleBar.resetPos();
+    }
+
+    resizeToFitParent() {
+        // Reset dimensions to auto
+        this.cellInnerHTMLElement.style.height = 'auto';
+        this.cellInnerHTMLElement.style.width = 'auto';
+
+        this.parentCell.scrollTop = 0;
+        this.parentCell.scrollLeft = 0;
+
+        // Calculate content size
+        let contentHeight = this.cellInnerHTMLElement.scrollHeight + 32;
+        let contentWidth = this.cellInnerHTMLElement.scrollWidth + 32;
+
+        // Adjust to grid size
+        contentHeight = Math.ceil(contentHeight / gridCellH);
+        contentWidth = Math.ceil(contentWidth / gridCellW);
+
+        if (contentWidth > this.parentCellObj.width) {
+            this.setSize(contentWidth-1, this.parentCellObj.height);
+        }
+
+        if (this.parentCellObj.width > contentWidth) {
+            this.setSize(this.parentCellObj.width-1, this.parentCellObj.height);
+        }
+
+        if (contentHeight > this.parentCellObj.height) {
+            this.setSize(this.parentCellObj.width-1, contentHeight);
+        }
+
+        if (this.parentCellObj.height > contentHeight) {
+            this.setSize(this.parentCellObj.width-1, this.parentCellObj.height);
+        }
+
+        this.parentCellObj.titleBar.resetPos();
     }
 }
 
@@ -637,6 +682,7 @@ class resizeCorner {
             Math.floor(newWidth / gridCellW),
             Math.floor(newHeight / gridCellH)
         );
+        this.parentCellObj.innerDiv.resizeToFitParent();
     };
 
     stopResizeHandler = () => {
