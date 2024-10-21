@@ -11,8 +11,8 @@ body, html {
 }
 
 .selectionBox{
-    background-color: #0033a057;
-    border: 1px solid #0033a087;
+    background-color: #5564f157;
+    border: 1px solid #5564f187;
     position: fixed;
     z-index: 9999 !important;
     border-radius: 5px;
@@ -28,7 +28,7 @@ Top Menu
     height: 40px;
     z-index: 1000;
     margin: 20px;
-    background: linear-gradient(90deg, #0033a0, #C6007E);
+    background: linear-gradient(90deg, #ff4848, #5564f1);
     border-radius: 30px;
     padding-left: 5px;
     padding-right: 5px;
@@ -47,7 +47,7 @@ Top Menu
     border-radius: 20px;
     margin-top: 5px;
     font-weight: 400;
-    color:#0033A0;
+    color:#5564f1;
     cursor: pointer;
     user-select: none;
     margin-right: 3.5px;
@@ -56,7 +56,7 @@ Top Menu
 }
 
 .topMenuButton:hover{
-    background-color: #0033A0;
+    background-color: #5564f1;
     color: white;
     
 }
@@ -71,7 +71,7 @@ Top Menu
     border-radius: 20px;
     margin-top: 5px;
     font-weight: 400;
-    color:#0033A0;
+    color:#5564f1;
     cursor: pointer;
     user-select: none;
     margin-right: 3.5px;
@@ -81,7 +81,7 @@ Top Menu
 }
 
 .topMenuButtonRight:hover{
-    background-color: #0033A0;
+    background-color: #5564f1;
     color: white;
     
 }
@@ -109,21 +109,21 @@ Board
     /*box-shadow: 0px 0px 10px rgb(156, 156, 156);*/
     overflow: hidden;
     border-radius: 10px 10px 0px 10px;
-    color: #0033A0;
+    color: #5564f1;
     box-sizing: border-box;
     
 }
 
 .cellSelected{
-    box-shadow: 0px 0px 20px 0px #0033A0;
+    box-shadow: 0px 0px 20px 0px #5564f1;
 }
 
 .cell:focus-within {
-    box-shadow: 0px 0px 20px 0px #0033A0;
+    box-shadow: 0px 0px 20px 0px #5564f1;
 }
 
 .cell:hover{
-    box-shadow: 0px 0px 20px 0px #0033A0;
+    box-shadow: 0px 0px 20px 0px #5564f1;
     z-index: 9999 !important;
 }
 
@@ -147,6 +147,8 @@ Board
     outline:none;
     user-select: none;
     cursor: text;
+    word-break: break-all;
+    text-align: justify;
 }
 
 .cellInnerHTML img {
@@ -198,10 +200,10 @@ Board
     width: 100%;
     height: 32px;
     line-height:32px;
-    background: #0033A0;
+    background: #5564f1;
     text-align: center;
     font-weight: 400;
-    color: #0033A0;
+    color: #5564f1;
     font-size: 15px;
     user-select: none;
     cursor:grab;
@@ -219,7 +221,7 @@ Board
     background: white;
     text-align: center;
     font-weight: 400;
-    color: #0033A0;
+    color: #5564f1;
     font-size: 15px;
     user-select: none;
     cursor:grab;
@@ -237,6 +239,7 @@ Board
     bottom:0;
     cursor:se-resize;
     pointer-events:all;
+    background-image: url("../Img/resizeCornerGray.png");
 }
 
 .corner:hover{
@@ -247,10 +250,11 @@ Board
     position: fixed;
     width: 320px;
     height: 320px;
+    
     border:double 5px #4a4a4a;
     overflow: hidden;
     border-radius: 10px 10px 0px 10px;
-    color: #0033A0;
+    color: #5564f1;
     user-select: none;
     pointer-events: none;
     

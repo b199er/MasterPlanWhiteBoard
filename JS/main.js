@@ -377,6 +377,7 @@ class Board {
             cell.setSize(cellData.width, cellData.height);
             if (cell.innerDiv && cellData.innerHTML) {
                 cell.innerDiv.cellInnerHTMLElement.innerHTML = cellData.innerHTML;
+                cell.innerDiv.resizeToFitParent();
             }
             if (cell.titleBar && cellData.title) {
                 cell.titleBar.titleText.innerHTML = cellData.title;
@@ -540,13 +541,14 @@ class CellInnerDiv {
     }
 
     setSize(w, h) {
-        if (w < this.parentCellObj.minWidth) {
+        console.log(w);
+        /*if (w < this.parentCellObj.minWidth) {
             w = this.parentCellObj.minWidth;
         }
 
         if (h < this.parentCellObj.minHeight) {
             h = this.parentCellObj.minHeight;
-        }
+        }*/
 
         this.cellInnerHTMLElement.style.height = `${h * gridCellH}px`;
         this.cellInnerHTMLElement.style.width = `${w * gridCellW}px`;
@@ -573,12 +575,12 @@ class CellInnerDiv {
         }, 10);
     }
 
-    
-
     resizeToFitContent() {
         // Reset dimensions to auto
         this.cellInnerHTMLElement.style.height = 'auto';
         this.cellInnerHTMLElement.style.width = 'auto';
+
+        this.top = 33;
 
         this.parentCell.scrollTop = 0;
         this.parentCell.scrollLeft = 0;
@@ -592,7 +594,7 @@ class CellInnerDiv {
         contentWidth = Math.ceil(contentWidth / gridCellW);
 
         if (contentWidth > this.parentCellObj.width) {
-            this.setSize(contentWidth-1, this.parentCellObj.height);
+            this.setSize(this.parentCellObj.width-1, this.parentCellObj.height);
             this.parentCellObj.setSize(this.parentCellObj.width, this.parentCellObj.height);
         }
 
@@ -631,13 +633,10 @@ class CellInnerDiv {
         contentHeight = Math.ceil(contentHeight / gridCellH);
         contentWidth = Math.ceil(contentWidth / gridCellW);
 
-        if (contentWidth > this.parentCellObj.width) {
-            this.setSize(contentWidth-1, this.parentCellObj.height);
-        }
-
-        if (this.parentCellObj.width > contentWidth) {
-            this.setSize(this.parentCellObj.width-1, this.parentCellObj.height);
-        }
+        
+        this.setSize(this.parentCellObj.width-1, contentHeight);
+   
+ 
 
         if (contentHeight > this.parentCellObj.height) {
             this.setSize(this.parentCellObj.width-1, contentHeight);
@@ -683,6 +682,7 @@ class resizeCorner {
             Math.floor(newHeight / gridCellH)
         );
         this.parentCellObj.innerDiv.resizeToFitParent();
+        
     };
 
     stopResizeHandler = () => {
