@@ -724,7 +724,7 @@ class Cell {
     setSelected(state){
         this.selected = state;
         if(state){
-            this.element.style.border = "2px solid #0033A0";
+            this.element.style.border = "2px solid #5564f1";
         }else{
             this.element.style.border = "";
         }
@@ -830,7 +830,7 @@ class Frame extends Cell {
     setSelected(state){
         this.selected = state;
         if(state){
-            this.element.style.border = "5px double #0033A0";
+            this.element.style.border = "5px double #5564f1";
         }else{
             this.element.style.border = "";
         }
